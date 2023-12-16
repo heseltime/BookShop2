@@ -28,11 +28,16 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    component: BookFormComponent
+    component: BookFormComponent,
+    canActivate: [canNavigateToAdminGuard]
   },
   {
     path: 'adminR/:id',
     component: BookRformComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 ];
 
