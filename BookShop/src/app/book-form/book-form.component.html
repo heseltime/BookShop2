@@ -1,6 +1,8 @@
 <h1>Buchformular</h1>
-<form class="ui large form" (ngSubmit)="submitForm()">
+<form class="ui large form" 
+  (ngSubmit)="submitForm()" 
   #myForm="ngForm"
+>
   <div class="field">
     <label>Buchtitel</label>
     <input name="title" 
