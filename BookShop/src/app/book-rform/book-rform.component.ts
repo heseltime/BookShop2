@@ -45,7 +45,7 @@ export class BookRformComponent {
       year: this.book.year,
       price: this.book.price,
       picture: this.book.picture,
-      isbn: [this.book.isbn, Validators.required]
+      isbn: [this.book.isbn, [Validators.required, isbnValidator()]]
     });
 
     this.myForm.statusChanges.subscribe(() => this.updateErrorMessages());
