@@ -38,6 +38,11 @@ update(book: Book): Observable<any> {
     .pipe(map<any, Book>(res => res['book']), catchError(this.errorHandler));
 }
 
+search(searchTerm: string): Observable<Book[]> {
+  return this.http.get<Book[]>(`${environment.server}/search/${searchTerm}`)
+    .pipe(map<any, Book[]>(res => res['books']), catchError(this.errorHandler));
+}
+
    private initBooks() {
     this.books = [
       new Book(

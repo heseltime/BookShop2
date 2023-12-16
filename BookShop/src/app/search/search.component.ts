@@ -20,7 +20,13 @@ export class SearchComponent implements OnInit {
   myKeyUp = new EventEmitter<string>();
 
   ngOnInit() {
-
+    this.myKeyUp.pipe(
+      debounceTime(500),
+      distinctUntilChanged(),
+      tap(() => this.isLoading = true),
+      switchMap(searchTerm => this.bs.search(searchTerm)),
+      tap(() => this.isLoading = false)
+    ).subscribe(books => this.foundBooks = books);
   }
 
 }
