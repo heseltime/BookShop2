@@ -19,7 +19,12 @@ export class BookFormComponent {
   constructor(private bs: BookStoreService) { }
   
   submitForm() {
-    // TODO Save
+    // this.book.author = this.myForm.value.author
+    
+    this.bs.save(this.book).subscribe(res => {
+      this.book = new Book();
+      this.myForm.reset(this.book);
+    });
   }
   
   ngOnInit() {

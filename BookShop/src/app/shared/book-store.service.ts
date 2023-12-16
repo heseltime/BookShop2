@@ -28,7 +28,10 @@ export class BookStoreService {
       .pipe(map<any, Book>(res => res['book']), catchError(this.errorHandler));
   }
 
-
+save(book: Book): Observable<any> {
+  return this.http.post<any>(`${environment.server}/save`, book)
+    .pipe(catchError(this.errorHandler));
+}
 
    private initBooks() {
     this.books = [
