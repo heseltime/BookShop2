@@ -17,6 +17,7 @@ export class SearchComponent implements OnInit {
   isLoading: boolean = false;
   foundBooks: Book[] = [];
   @Output() bookSelected = new EventEmitter<Book>();
+  myKeyUp = new EventEmitter<string>();
 
   ngOnInit() {
 
