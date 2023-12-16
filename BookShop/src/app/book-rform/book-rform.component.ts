@@ -28,13 +28,25 @@ export class BookRformComponent {
     const id = this.route.snapshot.params['id'];
     if (id) {
       this.isUpdatingBook = true;
-      // TODO load book
+      this.bs.getBookById(id).subscribe(book => {
+        this.book = book;
+        this.initForm();
+      });
     }
     this.initForm();
   }
 
   initForm() {
-    // TODO
+    this.myForm = this.fb.group({
+      title: [this.book.title, Validators.required],
+      publisher: this.book.publisher,
+      description: this.book.description,
+      author: this.book.author,
+      year: this.book.year,
+      price: this.book.price,
+      picture: this.book.picture,
+      isbn: [this.book.isbn, Validators.required]
+    });
 
     this.myForm.statusChanges.subscribe(() => this.updateErrorMessages());
   }
@@ -42,11 +54,17 @@ export class BookRformComponent {
   submitForm() {
     //this.book.author = this.myForm.value.author;
     const book: Book = this.myForm.value;
+    book.id = this.book.id;
 
     if (this.isUpdatingBook) {
-      // TODO Update
+      this.bs.update(book).subscribe(res => {
+        this.router.navigate(['../../books', book.id], { relativeTo: this.route }); // because we "injected" router (?)
+      });
     } else {
-      // TODO Save
+      this.bs.save(book).subscribe(res => {
+        this.book = new Book();
+        this.initForm();
+      });
     }
   }
 

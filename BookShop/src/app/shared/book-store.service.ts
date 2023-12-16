@@ -33,6 +33,11 @@ save(book: Book): Observable<any> {
     .pipe(catchError(this.errorHandler));
 }
 
+update(book: Book): Observable<any> {
+  return this.http.put<any>(`${environment.server}/update/${book.id}`, book)
+    .pipe(map<any, Book>(res => res['book']), catchError(this.errorHandler));
+}
+
    private initBooks() {
     this.books = [
       new Book(
