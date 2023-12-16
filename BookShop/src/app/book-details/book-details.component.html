@@ -1,5 +1,7 @@
 <div class="ui grid" *ngIf="book">
-
+    <div class="four wide column">
+      <img class="ui large image" *ngIf="book.picture" [src]="imageUrl()" />
+    </div>
     <div class="eight wide column">
       <h1 class="ui header">{{ book.title }}</h1>
       <h3 class="ui header">{{ book.author }}</h3>
