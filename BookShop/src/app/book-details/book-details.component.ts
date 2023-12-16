@@ -36,4 +36,15 @@ export class BookDetailsComponent {
     //  this.showListEvent.emit();
   }
 
+  addToShoppingCart() {
+    // not Angular-specific
+    const data = localStorage.getItem('WEA5.shoppingCart') || '[]';
+    const items = JSON.parse(data);
+
+    items.push(this.book.id);
+    localStorage.setItem('WEA5.shoppingCart', JSON.stringify(items));
+
+    // shorter persistence: sessionStorage.setItem('WEA5.lastAddedBook', this.book.title);
+  }
+
 }
