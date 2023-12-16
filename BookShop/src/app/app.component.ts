@@ -26,7 +26,7 @@ export class AppComponent {
   // }
 
   constructor(private oauthService: OAuthService) {
-    // this.configureWithNewConfigApi();
+    this.configureWithNewConfigApi();
   }
 
   private configureWithNewConfigApi() {
