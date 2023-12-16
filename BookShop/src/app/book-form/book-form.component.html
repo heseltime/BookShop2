@@ -1,0 +1,71 @@
+<h1>Buchformular</h1>
+<form class="ui large form">
+
+  <div class="field">
+    <label>Buchtitel</label>
+    <input name="title" 
+    
+    pattern="[a-zA-Z-:,?!äöü ]*" required>
+    <div *ngIf="errors['title']" class="ui negative message">
+      {{ errors['title'] }}
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Autor</label>
+    <input name="author" 
+    
+    pattern="[a-zA-Zäöü ]*" required>
+    <div *ngIf="errors['author']" class="ui negative message">
+      {{ errors['author'] }}
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Erscheinungsdatum</label>
+    <input type="date" name="year" 
+    
+    useValueAsDate required>
+    <div *ngIf="errors['year']" class="ui negative message">
+      {{ errors['year'] }}
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Verlag</label>
+    <input name="publisher" 
+    
+    pattern="[a-zA-Zäöü ]*" required>
+    <div *ngIf="errors['publisher']" class="ui negative message">
+      {{ errors['publisher'] }}
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Preis</label>
+    <input name="price" 
+    
+    pattern="[0-9]*,[0-9]*" required>
+    <div *ngIf="errors['price']" class="ui negative message">
+      {{ errors['price'] }}
+    </div>
+  </div>
+  <div class="field">
+    <label>ISBN</label>
+    <input name="isbn" 
+    
+    required />
+    <div *ngIf="errors['isbn']" class="ui negative message">
+      {{ errors['isbn'] }}
+    </div>
+  </div>
+  <div class="field">
+    <label>Beschreibung</label>
+    <textarea name="description" 
+    
+    rows="3"></textarea>
+  </div>
+
+
+  <button type="submit" class="ui button">Speichern</button>
+</form>
